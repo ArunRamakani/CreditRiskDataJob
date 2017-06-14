@@ -3,20 +3,20 @@ kind: CronJob
 metadata:
   name: CreditRatingDataJob
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "0/5 * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: hello
-            image: busybox
+          - name: creditriskdatajob
+            image: arunramakani/creditriskdatajob
 	    args:
        	    - "--ignore-db-dir"
             - "lost+found"
           restartPolicy: OnFailure
           volumeMounts:
-          - name: mysql-persistent-storage
+          - name: credit-rating-storage
             mountPath: /creditrating
         volumes:
         - name: credit-rating-storage

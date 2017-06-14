@@ -10,6 +10,8 @@ COPY entrypoint.sh entrypoint.sh
 RUN chmod 755 /preprocess.py
 RUN chmod 755 /entrypoint.sh
 
+RUN mkdir /creditrating
+
 ENTRYPOINT ["./entrypoint.sh"]
 
 

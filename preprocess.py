@@ -50,16 +50,16 @@ import urllib.request
 
 page = urllib.request.urlopen(running_job.stdout_url)
 
-f = open("data.csv", "wb")
+f = open("/creditrating/data.csv", "wb")
 content = page.read()
 f.write(content)
 f.close()
 
 print(content)
 
-files = [f for f in os.listdir('.') if os.path.isfile(f)]
-for f in files:
-    print(f)
+#files = [f for f in os.listdir('.') if os.path.isfile(f)]
+#for f in files:
+#    print(f)
     
 #with open('data.csv', "rt") as csvfile:
 #    csv = csv.reader(csvfile)  # with the appropriate encoding
