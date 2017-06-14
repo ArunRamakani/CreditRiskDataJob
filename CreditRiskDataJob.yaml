@@ -1,0 +1,24 @@
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: CreditRatingDataJob
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+	    args:
+       	    - "--ignore-db-dir"
+            - "lost+found"
+          restartPolicy: OnFailure
+          volumeMounts:
+          - name: mysql-persistent-storage
+            mountPath: /creditrating
+        volumes:
+        - name: credit-rating-storage
+          persistentVolumeClaim:
+            claimName: credit-rating-pvc
